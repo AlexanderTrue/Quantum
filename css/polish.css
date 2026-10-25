@@ -1,0 +1,164 @@
+/* ============================================================
+   Quantum — polish layer (лёгкий редизайн, минимум правок)
+   Прохладный фон, скругления, глубина, живой акцент
+   ============================================================ */
+
+:root {
+	--q-bg: #f7f7fb;
+	--q-dark: #252b42;
+	--q-accent: #7758e7;
+	--q-accent-soft: #8463fd;
+	--q-radius: 18px;
+}
+
+/* ---------- фон: прохладный лавандово-белый вместо чисто белого ---------- */
+body,
+.wrapper {
+	background-color: var(--q-bg);
+}
+
+body {
+	background-image:
+		radial-gradient(900px 520px at 8% -6%, rgba(119, 88, 231, 0.06), transparent 60%),
+		radial-gradient(820px 500px at 96% 10%, rgba(132, 99, 253, 0.05), transparent 55%);
+	background-attachment: fixed;
+}
+
+/* тёмно-синие блоки — чуть глубже + мягкое фиолетовое свечение */
+.clients__footer,
+.getInTouch__column_dark,
+.footer {
+	position: relative;
+	overflow: hidden;
+}
+
+.clients__footer::before,
+.getInTouch__column_dark::before,
+.footer::before {
+	content: "";
+	position: absolute;
+	width: 520px;
+	height: 520px;
+	border-radius: 50%;
+	background: radial-gradient(circle, rgba(132, 99, 253, 0.18), transparent 65%);
+	pointer-events: none;
+}
+
+.clients__footer::before {
+	top: -260px;
+	right: -140px;
+}
+
+.footer::before {
+	bottom: -300px;
+	left: -160px;
+}
+
+.getInTouch__column_dark::before {
+	top: -200px;
+	right: -120px;
+}
+
+/* ---------- скругления карточек и картинок ---------- */
+.services__column,
+.exp__column,
+.practice__column,
+.getInTouch__column {
+	border-radius: var(--q-radius);
+	overflow: hidden;
+}
+
+.services__column,
+.exp__column {
+	transition: transform 0.3s ease 0s, box-shadow 0.3s ease 0s;
+}
+
+.services__column:hover,
+.exp__column:hover {
+	transform: translateY(-4px);
+	box-shadow: 0 22px 40px -18px rgba(37, 43, 66, 0.35);
+}
+
+.practice-image-ibg {
+	display: block;
+	border-radius: 12px;
+	overflow: hidden;
+}
+
+.practice-image-ibg img {
+	transition: transform 0.7s cubic-bezier(0.22, 0.8, 0.3, 1);
+}
+
+@media (any-hover: hover) {
+	.practice-image-ibg:hover img {
+		transform: scale(1.05);
+	}
+}
+
+/* иконки-медийки в блоках */
+.exp__column_image,
+.getInTouch__image,
+.services__image {
+	border-radius: 12px;
+}
+
+/* видео «Who We Are» */
+.preview__content_video {
+	border-radius: var(--q-radius);
+	overflow: hidden;
+}
+
+.preview__content_video iframe {
+	border-radius: var(--q-radius);
+}
+
+/* ---------- кнопки: скругления + живой hover ---------- */
+.finance__item_first,
+.finance__item_second,
+.clients__form_button,
+.getInTouch__button {
+	border-radius: 12px;
+	transition: all 0.3s ease 0s, transform 0.25s ease 0s, box-shadow 0.25s ease 0s;
+}
+
+@media (any-hover: hover) {
+
+	.finance__item_first:hover,
+	.finance__item_second:hover,
+	.clients__form_button:hover,
+	.getInTouch__button:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 16px 30px -12px rgba(119, 88, 231, 0.55);
+	}
+}
+
+/* ---------- форма: скругления, фокус ---------- */
+.input {
+	border-radius: 12px !important;
+	transition: border-color 0.3s ease 0s, box-shadow 0.3s ease 0s;
+}
+
+/* пара «инпут + кнопка» в подписке — скругляем только внешние углы */
+.clients__form_input {
+	border-radius: 12px 0 0 12px !important;
+}
+
+.clients__form_button {
+	border-radius: 0 12px 12px 0;
+}
+
+.input:focus {
+	border-color: var(--q-accent);
+	box-shadow: 0 0 0 4px rgba(119, 88, 231, 0.15);
+	outline: none;
+}
+
+/* ---------- мелочи ---------- */
+::selection {
+	background: rgba(119, 88, 231, 0.85);
+	color: #fff;
+}
+
+html {
+	scroll-behavior: smooth;
+}
