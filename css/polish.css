@@ -32,6 +32,12 @@ body {
 	overflow: hidden;
 }
 
+/* блок подписки должен рисоваться ПОВЕРХ полосы clients__footer */
+.clients__container {
+	position: relative;
+	z-index: 1;
+}
+
 .clients__footer::before,
 .getInTouch__column_dark::before,
 .footer::before {
